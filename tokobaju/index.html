@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Home — Koleksi Nyaman & Modern</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" link rel="stylesheet" />
+</head>
+<body>
+  <div class="wrap">
+    <header aria-label="Header">
+      <div style="display:flex;gap:12px;align-items:center">
+        <div class="brand">Mode Ease</div>
+        <nav>
+          <a href="index.html">Home</a>
+          <a href="tentang.html">Tentang</a>
+          <a href="produk.html">Pria</a>
+          <a href="wanita.html">Wanita</a>
+          <a href="ulasan.html">Ulasan</a>
+        </nav>
+      </div>
+      <div style="display:flex;gap:12px;align-items:center">
+        <div class="search">
+          <input id="searchInput" type="text" placeholder="Cari produk, warna, atau kode..." aria-label="Cari produk" />
+          <button id="filterToggle" class="btn btn-ghost" aria-expanded="false">Filter</button>
+        </div>
+
+        <div style="display:flex;gap:8px;align-items:center">
+          <button id="cartBtn" class="btn btn-ghost">Keranjang <span id="cartCount" class="count-badge" style="margin-left:8px">0</span></button>
+        </div>
+      </div>
+    </header>
+
+    <!-- HOME -->
+    <section id="home" class="hero" aria-label="Home">
+      <div class="badge">New</div>
+      <h1>Koleksi Pakaian Nyaman untuk Kampus & Sehari-hari</h1>
+      <p>Desain minimalis, bahan lembut — dibuat khusus untuk aktivitasmu.</p>
+      <div class="ctas">
+        <a href="produk.html" class="btn btn-primary">Lihat Koleksi Terbaru</a>
+        <button class="btn btn-ghost" onclick="openPromo()">Promo Hari Ini</button>
+      </div>
+      <ul class="features">
+        <li>Bahan lembut & nyaman untuk aktivitas seharian.</li>
+        <li>Desain minimalis yang mudah dipadupadankan.</li>
+        <li>Pengiriman cepat & layanan customer support ramah.</li>
+      </ul>
+    </section>
+
+    <!-- modal root -->
+    <div id="modalRoot" style="display:none"></div>
+
+    <!-- cart panel -->
+    <div id="cartPanel" class="cart-panel" style="display:none" aria-label="Keranjang">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+        <strong>Keranjang</strong>
+        <button onclick="toggleCart(false)" class="btn btn-ghost">Tutup</button>
+      </div>
+      <div id="cartItems" style="max-height:320px;overflow:auto"></div>
+      <div style="border-top:1px solid rgba(2,6,23,0.04);padding-top:12px;margin-top:12px">
+        <div style="display:flex;justify-content:space-between;margin-bottom:4px">
+          <span>Subtotal</span><strong id="subtotalPrice">Rp 0</strong>
+        </div>
+        <div style="display:flex;justify-content:space-between;margin-bottom:8px;font-size:13px;color:var(--muted)">
+          <span>Diskon</span><span id="discountLabel">-</span>
+        </div>
+
+        <div style="display:flex;gap:6px;margin-bottom:8px">
+          <input id="voucherInput" placeholder="Kode voucher" style="flex:1;padding:6px 8px;border-radius:8px;border:1px solid rgba(2,6,23,0.08)">
+          <button class="btn btn-ghost" style="white-space:nowrap" onclick="applyVoucher()">Pakai</button>
+        </div>
+
+        <div style="display:flex;justify-content:space-between;margin-bottom:8px">
+          <span>Total</span><strong id="totalPrice">Rp 0</strong>
+        </div>
+
+        <div style="display:flex;gap:8px">
+          <button class="btn btn-ghost" style="flex:1" onclick="toggleCart(false)">Lanjut Belanja</button>
+          <button class="btn btn-primary" style="flex:1" onclick="showCheckoutForm()">Checkout</button>
+        </div>
+      </div>
+    </div>
+
+     <footer>
+      <div class="footer-grid">
+        <div class="footer-left">
+          <strong>Mode Ease</strong>
+          <div class="muted footer-desc">Koleksi nyaman & sederhana untuk kampus</div>
+          <div class="footer-social">
+            <small class="muted">Ikuti kami</small>
+            <div class="flex-center-small footer-follow">
+              <a href="https://www.instagram.com/modeease.id?igsh=ZmU5NGtqYTRsbTRw">Instagram</a>
+              <a href="https://www.tiktok.com/@thisisiamm">TikTok</a>
+            </div>
+          </div>
+        </div>
+        <div class="footer-right">
+          <div class="footer-copyright">© 2025 Mode Ease</div>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- toast -->
+  <div id="toastRoot" style="display:none"></div>
+
+  <!-- popup first-visit -->
+  <div id="popup" class="popup" style="display:none">
+    <div class="box">
+      <h3>Selamat Datang di Mode Ease 🎉</h3>
+      <p>Dapatkan <strong>Diskon 10%</strong> untuk pembelian pertama — gunakan kode <strong>NWE10</strong></p>
+      <div style="display:flex;gap:8px;justify-content:center;margin-top:12px">
+        <button class="btn btn-primary" onclick="closePopup()">Ambil Voucher</button>
+        <button class="btn btn-ghost" onclick="closePopup()">Nanti</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- whatsapp -->
+  <a href="https://wa.me/6285175270845" class="wa-btn" title="Chat via WhatsApp">💬</a>
+
+  <!-- Chatbot FAQ -->
+  <div id="chatbotToggle" style="position:fixed;bottom:90px;right:20px;width:52px;height:52px;border-radius:50%;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 8px 26px rgba(15,23,42,0.4);z-index:999">
+    ?
+  </div>
+
+  <div id="chatbotPanel" style="position:fixed;bottom:150px;right:20px;width:290px;background:var(--card);border-radius:14px;box-shadow:0 18px 40px rgba(15,23,42,0.45);padding:12px;display:none;z-index:1000;font-size:13px">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+      <strong>Mode Ease Assistant</strong>
+      <button class="btn btn-ghost" style="padding:2px 6px;font-size:12px" onclick="toggleChatbot(false)">×</button>
+    </div>
+    <div id="chatbotContent" style="max-height:240px;overflow:auto;color:var(--muted)">
+      <p>Hai! Ada yang bisa kami bantu? Pilih salah satu pertanyaan cepat:</p>
+      <div style="display:flex;flex-direction:column;gap:6px;margin-top:6px">
+        <button class="btn btn-ghost" style="text-align:left" onclick="chatbotAsk('size')">Bagaimana pilih ukuran yang pas?</button>
+        <button class="btn btn-ghost" style="text-align:left" onclick="chatbotAsk('pengiriman')">Berapa lama pengiriman?</button>
+        <button class="btn btn-ghost" style="text-align:left" onclick="chatbotAsk('pembayaran')">Metode pembayaran apa saja?</button>
+        <button class="btn btn-ghost" style="text-align:left" onclick="chatbotAsk('retur')">Bisa retur / tukar size?</button>
+      </div>
+    </div>
+  </div>
+  <script src="js/style.js"></script>
+</body>
+</html>

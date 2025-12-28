@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Tentang - Mode Ease</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" />
+</head>
+<body>
+  <div class="wrap">
+    <header aria-label="Header">
+      <div class="flex-center">
+        <div class="brand" onclick="window.location.href='index.html'">Mode Ease</div>
+        <nav>
+          <a href="index.html">Home</a>
+          <a href="tentang.html">Tentang</a>
+          <a href="produk.html">Pria</a>
+          <a href="wanita.html">Wanita</a>
+          <a href="ulasan.html">Ulasan</a>
+        </nav>
+      </div>
+
+      <div class="flex-center">
+        <div class="search">
+          <input id="searchInput" type="text" placeholder="Cari produk, warna, atau kode..." aria-label="Cari produk" />
+          <button id="filterToggle" class="btn btn-ghost" aria-expanded="false">Filter</button>
+        </div>
+
+        <div class="flex-center-small">
+          <button id="cartBtn" class="btn btn-ghost">Keranjang <span id="cartCount" class="count-badge ml-8">0</span></button>
+        </div>
+      </div>
+    </header>
+
+    <!-- TENTANG -->
+    <section id="tentang" class="about-section">
+      <h2>Tentang Mode Ease</h2>
+      <h1>Mode Ease adalah brand fashion lokal yang menghadirkan pakaian harian dengan desain bersih, nyaman dipakai, dan mudah dipadupadankan.
+Didirikan pada tahun 2022, kami berkomitmen menghadirkan produk berkualitas dengan potongan rapi, bahan pilihan, serta harga yang tetap terjangkau untuk kebutuhan sehari-hari.</h1>
+      <div class="flex-wrap" style="margin-top:20px;gap:20px">
+        <div class="min-w-240">
+          <strong>🎯 Visi</strong>
+          <p>Menjadi brand fashion terkemuka yang dikenal karena kualitas, kenyamanan, dan desain minimalis yang sesuai dengan gaya hidup modern.</p>
+        </div>
+      <div class="flex-wrap">
+        <div class="min-w-240">
+          <strong>🎯 Misi</strong>
+          <p>Menyediakan pakaian yang nyaman, fungsional, dan relevan untuk aktivitas harian, dengan kualitas bahan dan desain yang konsisten.</p>
+        </div>
+        <div class="min-w-240">
+          <strong>💡 Moto </strong>
+          <p>Kami menjunjung tinggi kejujuran dalam pemilihan bahan, ketelitian dalam desain, serta pelayanan pelanggan yang responsif dan profesional.</p>
+        </div>
+        <div class="min-w-240">
+          <strong>📞 Kontak</strong>
+          <p>Email : modeeaseman@gmail.com <br> • WhatsApp: +62 821-2345-678</p>
+        </div>
+        <div class="min-w-240">
+          <strong>🏢 Alamat</strong>
+          <p>Krendang barat gang 2 no 6 rt 6 rw 6,Tambora,Jakarta Barat, Jakarta 11240, Indonesia</p>
+        </div>
+      </div>
+    </section>
+    <!-- modal root -->
+    <div id="modalRoot" style="display:none"></div>
+
+    <!-- cart panel -->
+    <div id="cartPanel" class="cart-panel" style="display:none" aria-label="Keranjang">
+      <div class="cart-header">
+        <strong>Keranjang</strong>
+        <button onclick="toggleCart(false)" class="btn btn-ghost">Tutup</button>
+      </div>
+      <div id="cartItems" class="cart-items"></div>
+      <div class="cart-divider">
+        <div class="cart-row">
+          <span>Subtotal</span><strong id="subtotalPrice">Rp 0</strong>
+        </div>
+        <div class="cart-discount">
+          <span>Diskon</span><span id="discountLabel">-</span>
+        </div>
+
+        <div class="cart-voucher">
+          <input id="voucherInput" placeholder="Kode voucher" class="voucher-input">
+          <button class="btn btn-ghost voucher-btn" onclick="applyVoucher()">Pakai</button>
+        </div>
+
+        <div class="cart-total">
+          <span>Total</span><strong id="totalPrice">Rp 0</strong>
+        </div>
+
+        <div class="cart-actions">
+          <button class="btn btn-ghost" style="flex:1" onclick="toggleCart(false)">Lanjut Belanja</button>
+          <button class="btn btn-primary" style="flex:1" onclick="showCheckoutForm()">Checkout</button>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <div class="footer-grid">
+        <div class="footer-left">
+          <strong>Mode Ease</strong>
+          <div class="muted footer-desc">Koleksi nyaman & sederhana untuk kampus</div>
+          <div class="footer-social">
+            <small class="muted">Ikuti kami</small>
+            <div class="flex-center-small footer-follow">
+              <a href="https://www.instagram.com/modeease.id?igsh=ZmU5NGtqYTRsbTRw">Instagram</a>
+              <a href="https://www.tiktok.com/@thisisiamm">TikTok</a>
+            </div>
+          </div>
+        </div>
+        <div class="footer-right">
+          <div class="footer-copyright">© 2025 Mode Ease</div>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- toast -->
+  <div id="toastRoot" style="display:none"></div>
+
+  <!-- popup first-visit -->
+  <div id="popup" class="popup" style="display:none">
+    <div class="box">
+      <h3>Selamat Datang di Mode Ease 🎉</h3>
+      <p>Dapatkan <strong>Diskon 10%</strong> untuk pembelian pertama — gunakan kode <strong>NWE10</strong></p>
+      <div class="popup-actions">
+        <button class="btn btn-primary" onclick="closePopup()">Ambil Voucher</button>
+        <button class="btn btn-ghost" onclick="closePopup()">Nanti</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- whatsapp -->
+  <a href="https://wa.me/6285175270845" class="wa-btn" title="Chat via WhatsApp">💬</a>
+
+  <!-- Chatbot FAQ -->
+  <div id="chatbotToggle" class="chatbot-toggle">
+    ?
+  </div>
+
+  <div id="chatbotPanel" class="chatbot-panel">
+    <div class="chatbot-header">
+      <strong>Mode Ease Assistant</strong>
+      <button class="btn btn-ghost" style="padding:2px 6px;font-size:12px" onclick="toggleChatbot(false)">×</button>
+    </div>
+    <div id="chatbotContent" class="chatbot-content">
+      <p>Hai! Ada yang bisa kami bantu? Pilih salah satu pertanyaan cepat:</p>
+      <div class="chatbot-questions">
+        <button class="btn btn-ghost chatbot-btn" onclick="chatbotAsk('size')">Bagaimana pilih ukuran yang pas?</button>
+        <button class="btn btn-ghost chatbot-btn" onclick="chatbotAsk('pengiriman')">Berapa lama pengiriman?</button>
+        <button class="btn btn-ghost chatbot-btn" onclick="chatbotAsk('pembayaran')">Metode pembayaran apa saja?</button>
+        <button class="btn btn-ghost chatbot-btn" onclick="chatbotAsk('retur')">Bisa retur / tukar size?</button>
+      </div>
+    </div>
+  </div>
+  <script src="js/style.js"></script>
+</body>
+</html>

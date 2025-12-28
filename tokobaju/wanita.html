@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Wanita - Mode Ease</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <div class="wrap">
+    <header aria-label="Header">
+      <div style="display:flex;gap:12px;align-items:center">
+        <div class="brand" onclick="window.location.href='index.html'">Mode Ease</div>
+        <nav>
+          <a href="index.html">Home</a>
+          <a href="tentang.html">Tentang</a>
+          <a href="produk.html">Pria</a>
+          <a href="wanita.html">Wanita</a>
+          <a href="ulasan.html">Ulasan</a>
+        </nav>
+      </div>
+
+      <div style="display:flex;gap:12px;align-items:center">
+        <div class="search">
+          <input id="searchInput" type="text" placeholder="Cari produk, warna, atau kode..." aria-label="Cari produk" />
+          <button id="filterToggle" class="btn btn-ghost" aria-expanded="false">Filter</button>
+        </div>
+
+        <div style="display:flex;gap:8px;align-items:center">
+          <button id="cartBtn" class="btn btn-ghost">Keranjang <span id="cartCount" class="count-badge" style="margin-left:8px">0</span></button>
+        </div>
+      </div>
+    </header>
+        <section id="produk" class="products" aria-label="Produk">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+          <div class="muted">Hasil: <strong id="queryText">semua produk</strong></div>
+          <div style="display:flex;gap:8px;align-items:center">
+            <select id="sort" style="padding:8px;border-radius:10px;border:1px solid rgba(2,6,23,0.06)">
+              <option value="relevant">Relevansi</option>
+              <option value="price-asc">Harga - Terendah</option>
+              <option value="price-desc">Harga - Tertinggi</option>
+              <option value="newest">Terbaru</option>
+            </select>
+          </div>
+        </div>
+       
+  <section class="item-container">
+
+    <div class="item-card">
+      <img src="https://tse4.mm.bing.net/th/id/OIP.rpswBjvyg74CMe1zHC7eBgHaHa?rs=1&pid=ImgDetMain&o=7&rm=3" alt="Blouse Polos">
+      <h3>Blouse Polos Casual</h3>
+      <p class="category">Atasan</p>
+      <p class="price">Rp 85.000</p>
+      <button>Beli Sekarang</button>
+    </div>
+
+    <div class="item-card">
+      <img src="https://down-id.img.susercontent.com/file/af7bc4022e46bc35a8431600b2d462a8" alt="Kemeja Oversize">
+      <h3>Kemeja Oversize Wanita</h3>
+      <p class="category">Kemeja</p>
+      <p class="price">Rp 110.000</p>
+      <button>Beli Sekarang</button>
+    </div>
+
+    <div class="item-card">
+      <img src="https://down-id.img.susercontent.com/file/id-11134207-7rbke-m78z70a9xyxs4d" alt="Cardigan Rajut">
+      <h3>Cardigan Rajut Simple</h3>
+      <p class="category">Outer</p>
+      <p class="price">Rp 125.000</p>
+      <button>Beli Sekarang</button>
+    </div>
+
+    <div class="item-card">
+      <img src="https://down-id.img.susercontent.com/file/ab0b5cbe2c4c5071ad20bc2537473157" alt="Rok A-Line">
+      <h3>Rok A-Line Kuliahan</h3>
+      <p class="category">Bawahan</p>
+      <p class="price">Rp 95.000</p>
+      <button>Beli Sekarang</button>
+    </div>
+    <div class="item-card">
+      <img src="https://images.tokopedia.net/img/HCoJbh/2025/1/10/d11ceb87-0624-4fe2-bed2-aee1437a2c00.jpg" alt="Celana Kulot">
+      <h3>Celana Kulot Wanita</h3>
+      <p class="category">Bawahan</p>
+      <p class="price">Rp 105.000</p>
+      <button>Beli Sekarang</button>
+    </div>
+    <div class="item-card">
+      <img src="https://img.lazcdn.com/g/p/d01286e7310684ba0dee036efd688951.jpg_720x720q80.jpg" alt="Sweater Rajut">
+      <h3>Sweater Rajut Hangat</h3>
+      <p class="category">Outer</p>
+      <p class="price">Rp 130.000</p>
+      <button>Beli Sekarang</button>
+    </div>
+  </section>
+    </section>
+   <footer>
+      <div class="footer-grid">
+        <div class="footer-left">
+          <strong>Mode Ease</strong>
+          <div class="muted footer-desc">Koleksi nyaman & sederhana untuk kampus</div>
+          <div class="footer-social">
+            <small class="muted">Ikuti kami</small>
+            <div class="flex-center-small footer-follow">
+              <a href="https://www.instagram.com/modeease.id?igsh=ZmU5NGtqYTRsbTRw">Instagram</a>
+              <a href="https://www.tiktok.com/@thisisiamm">TikTok</a>
+            </div>
+          </div>
+        </div>
+        <div class="footer-right">
+          <div class="footer-copyright">© 2025 Mode Ease</div>
+        </div>
+      </div>
+    </footer>
+</body>
+</html>
